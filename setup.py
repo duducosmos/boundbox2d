@@ -17,7 +17,7 @@ setup(
     package_dir={"":"src"},
     description="Bound Box 2D",
     lond_description=read("README.md"),
-    install_requires=["numpy",
-                      "matplotlib",
-                      ]
+    long_description_content_type="text/markdown",
+    url="https://github.com/duducosmos/boundbox2d",
+    install_requires=["numpy"]
 )

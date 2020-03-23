@@ -24,7 +24,6 @@ Copyright [2019] [E. S. Pereira]
 
 import numpy as np
 from numpy import array
-import matplotlib.pyplot as plt
 
 
 class ShapeError(Exception):
@@ -124,23 +123,24 @@ class BoundBox2D:
     def collision(self, boundboux2d):
         return separating_axis_theorem(boundboux2d.vertices, self._vertices)
 
-    def plot_box(self, boundboux2d=None):
-        fig = plt.figure(1, figsize=(5, 5), dpi=90)
-        ax = fig.add_subplot(111)
-
-        vtmp = self.vertices.copy()
-        vtmp = np.append(vtmp, [vtmp[0, :]], axis=0)
-        ax.plot(vtmp[:, 0], vtmp[:, 1], color='blue', alpha=0.7,
-                linewidth=3, solid_capstyle='round', zorder=2, label="1")
-
-        if boundboux2d is not None:
-            vtmp = boundboux2d.vertices.copy()
-            vtmp = np.append(vtmp, [vtmp[0, :]], axis=0)
-            vtmp = array(vtmp)
-            ax.plot(vtmp[:, 0], vtmp[:, 1], color='red', alpha=0.7,
-                    linewidth=3, solid_capstyle='round', zorder=2, label="2")
-
-        plt.legend()
-        plt.show()
+    # def plot_box(self, boundboux2d=None):
+    #     import matplotlib.pyplot as plt
+    #     fig = plt.figure(1, figsize=(5, 5), dpi=90)
+    #     ax = fig.add_subplot(111)
+    #
+    #     vtmp = self.vertices.copy()
+    #     vtmp = np.append(vtmp, [vtmp[0, :]], axis=0)
+    #     ax.plot(vtmp[:, 0], vtmp[:, 1], color='blue', alpha=0.7,
+    #             linewidth=3, solid_capstyle='round', zorder=2, label="1")
+    #
+    #     if boundboux2d is not None:
+    #         vtmp = boundboux2d.vertices.copy()
+    #         vtmp = np.append(vtmp, [vtmp[0, :]], axis=0)
+    #         vtmp = array(vtmp)
+    #         ax.plot(vtmp[:, 0], vtmp[:, 1], color='red', alpha=0.7,
+    #                 linewidth=3, solid_capstyle='round', zorder=2, label="2")
+    #
+    #     plt.legend()
+    #     plt.show()
 
     vertices = property(get_vertices, set_vertices)
